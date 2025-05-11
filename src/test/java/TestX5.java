@@ -25,22 +25,14 @@ public class TestX5 {
         prefs.put("profile.password_manager_leak_detection", false);
         options.setExperimentalOption("prefs", prefs);
 
-        WebDriver originalDriver = new ChromeDriver(options);
-
-        this.driver = SlowedWebDriver.wrapDriver(originalDriver, 1000);
-
-        return driver;
+        return new ChromeDriver(options);
     }
 
     private WebDriver initFirefoxDriver() {
         String driver_path = ConfigLoader.getProperty("firefox_driver_path");
         System.setProperty("webdriver.gecko.driver", driver_path);
 
-        WebDriver originalDriver = new FirefoxDriver();
-
-        this.driver = SlowedWebDriver.wrapDriver(originalDriver, 1000);
-
-        return driver;
+        return new FirefoxDriver();
     }
 
     public static OrdersPage ordersPage;
@@ -69,8 +61,6 @@ public class TestX5 {
     }
 
     public void testOnBrowser(String browserType) {
-
-        WebDriver driver;
 
         if ("firefox".equalsIgnoreCase(browserType)) {
             driver = initFirefoxDriver();
