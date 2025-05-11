@@ -1,17 +1,24 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class CustomersPage {
 
-    protected static WebDriver driver;
+    private final WebDriver driver;
+    private final WebDriverWait wait;
 
     private final By searchField = By.xpath("//input[@placeholder='Search']");
     //private final By customerCart = By.xpath("//div[contains(@class, 'MuiTypography-root MuiTypography-body2')]");
 
-    public CustomersPage(WebDriver driver) {CustomersPage.driver = driver;}
+    public CustomersPage(WebDriver driver) {
+        this.driver = driver;
+        wait = new WebDriverWait(driver, 15);
+    }
 
     public CustomersPage search(String customer) {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(searchField));
         driver.findElement(searchField).sendKeys(customer);
         return this;
     }

@@ -35,12 +35,12 @@ public class TestX5 {
         return new FirefoxDriver();
     }
 
-    public static OrdersPage ordersPage;
-    public static LoginPage loginPage;
-    public static MainPage mainPage;
-    public static InvoicesPage invoicesPage;
-    public static CustomersPage customersPage;
-    public static CustomerCartPage customerCartPage;
+    private OrdersPage ordersPage;
+    private LoginPage loginPage;
+    private MainPage mainPage;
+    private InvoicesPage invoicesPage;
+    private CustomersPage customersPage;
+    private CustomerCartPage customerCartPage;
     public String getCustomer;
     public String getCustomerName;
     public String getCustomerSurename;
@@ -101,6 +101,8 @@ public class TestX5 {
             invoicesPage.inputDateLte();
 
             pause(2);
+
+            invoicesPage.clickExpandButton();
 
             String[] parts = invoicesPage.customer();
 
