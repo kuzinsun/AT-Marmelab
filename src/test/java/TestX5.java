@@ -100,8 +100,6 @@ public class TestX5 {
 
             invoicesPage.inputDateLte();
 
-            pause(2);
-
             invoicesPage.clickExpandButton();
 
             String[] parts = invoicesPage.customer();
@@ -112,7 +110,7 @@ public class TestX5 {
 
             mainPage.customersLinkClick();
 
-            pause(2);
+            //pause(2);
 
             customersPage.search(getCustomer);
 
@@ -132,7 +130,7 @@ public class TestX5 {
 
             invoicesPage.sendCustomer(getCustomer);
 
-            invoicesPage.clickExpandButton();
+            //invoicesPage.clickExpandButton();
 
             invoicesPage.changeAddressCheck();
 
