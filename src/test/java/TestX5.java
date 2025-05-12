@@ -110,8 +110,6 @@ public class TestX5 {
 
             mainPage.customersLinkClick();
 
-            //pause(2);
-
             customersPage.search(getCustomer);
 
             customersPage.clickCustomerCart(getCustomerName, getCustomerSurename);
