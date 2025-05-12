@@ -2,8 +2,6 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import static org.junit.Assert.assertTrue;
-
 public class InvoicesPage {
 
     private final WebDriver driver;
@@ -96,7 +94,6 @@ public class InvoicesPage {
 
     public InvoicesPage changeAddressCheck() {
         waitForElement(changeAddressCheck);
-        //assertTrue(driver.findElement(changeAddressCheck).isDisplayed());
         if (driver.findElement(changeAddressCheck).isDisplayed()) {
             System.out.println("Адрес изменился на новый");
         } else {
@@ -107,8 +104,6 @@ public class InvoicesPage {
 
     public InvoicesPage checkOldAddressRevert(String oldAddress) {
         By check = By.xpath("//p[text()=\"" + oldAddress + "\"]");
-        //driver.findElement(By.xpath("//p[text()=\"" + oldAddress + "\"]"));
-        //assertTrue(check.isDisplayed());
         waitForElement(check);
         if (driver.findElement(check).isDisplayed()) {
             System.out.println("Адрес изменен на первоначальный");
