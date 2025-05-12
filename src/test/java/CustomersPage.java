@@ -1,4 +1,5 @@
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -19,17 +20,21 @@ public class CustomersPage {
 
     public CustomersPage search(String customer) {
         wait.until(ExpectedConditions.visibilityOfElementLocated(searchField));
+        driver.findElement(searchField).sendKeys(Keys.chord(Keys.CONTROL, "a"));
         driver.findElement(searchField).sendKeys(customer);
+        driver.findElement(searchField).sendKeys(Keys.ENTER);
         return this;
     }
 
     public CustomersPage clickCustomerCart(String getCustomerName, String getCustomerSurename) {
+        System.out.println("FIRST customer cart click" + " " + getCustomerName + " " + getCustomerSurename);
         WebElement customerCart = driver.findElement(By.xpath("//div[text()='" + getCustomerName + "' and text()='" + getCustomerSurename + "']"));
         customerCart.click();
         return this;
     }
 
     public CustomersPage clickSecondCustomerCart(String getCustomerName, String getCustomerSurename) {
+        System.out.println("Second customer cart click" + getCustomerName + " " + getCustomerSurename);
         WebElement secondCustomerCart = driver.findElement(By.xpath("//div[text()='" + getCustomerName + "' and text()='" + getCustomerSurename + "']"));
         secondCustomerCart.click();
         return this;

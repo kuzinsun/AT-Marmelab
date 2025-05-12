@@ -81,7 +81,7 @@ public class InvoicesPage {
     public InvoicesPage sendCustomer(String customerName) {
         wait.until(ExpectedConditions.visibilityOfElementLocated(sendCustomer));
         driver.findElement(sendCustomer).sendKeys(customerName);
-        driver.findElement(sendCustomer).sendKeys(Keys.ENTER);;
+        driver.findElement(sendCustomer).sendKeys(Keys.ENTER);
         return this;
     }
 
@@ -92,7 +92,7 @@ public class InvoicesPage {
     }
 
     public InvoicesPage checkOldAddressRevert(String oldAddress) {
-        WebElement check = driver.findElement(By.xpath("//p[text()='" + oldAddress + "']"));
+        WebElement check = driver.findElement(By.xpath("//p[text()=\"" + oldAddress + "\"]"));
         assertTrue(check.isDisplayed());
         return this;
     }

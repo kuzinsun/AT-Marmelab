@@ -24,7 +24,11 @@ public class CustomerCartPage {
     }*/
 
     public String getOldAddress() {
-        return driver.findElement(address).getText();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(address));
+        String temp = driver.findElement(address).getText();
+        System.out.println("Get OLD adress - " + temp);
+        return temp;
+
     }
 
     public CustomerCartPage enterAddress() {

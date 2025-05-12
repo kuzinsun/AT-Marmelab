@@ -112,6 +112,8 @@ public class TestX5 {
 
             mainPage.customersLinkClick();
 
+            pause(2);
+
             customersPage.search(getCustomer);
 
             customersPage.clickCustomerCart(getCustomerName, getCustomerSurename);
@@ -136,6 +138,8 @@ public class TestX5 {
 
             mainPage.customersLinkClick();
 
+            customersPage.search(getCustomer);
+
             customersPage.clickSecondCustomerCart(getCustomerName, getCustomerSurename);
 
             customerCartPage.revertAddress(oldAddress);
@@ -147,7 +151,9 @@ public class TestX5 {
             invoicesPage.checkOldAddressRevert(oldAddress);
 
         } finally {
-            driver.quit();
+            if (driver != null) {
+                driver.quit();
+            }
         }
     }
 }
