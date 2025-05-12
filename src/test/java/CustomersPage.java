@@ -27,13 +27,15 @@ public class CustomersPage {
     }
 
     public CustomersPage clickCustomerCart(String getCustomerName, String getCustomerSurename) {
-        WebElement customerCart = driver.findElement(By.xpath("//div[text()='" + getCustomerName + "' and text()='" + getCustomerSurename + "']"));
+        WebElement customerCart = driver.findElement(By.xpath("//div[text()=\"" + getCustomerName + "\" and text()=\"" + getCustomerSurename + "\"]"));
+        wait.until(ExpectedConditions.visibilityOf(customerCart));
         customerCart.click();
         return this;
     }
 
     public CustomersPage clickSecondCustomerCart(String getCustomerName, String getCustomerSurename) {
-        WebElement secondCustomerCart = driver.findElement(By.xpath("//div[text()='" + getCustomerName + "' and text()='" + getCustomerSurename + "']"));
+        WebElement secondCustomerCart = driver.findElement(By.xpath("//div[text()=\"" + getCustomerName + "\" and text()=\"" + getCustomerSurename + "\"]"));
+        wait.until(ExpectedConditions.visibilityOf(secondCustomerCart));
         secondCustomerCart.click();
         return this;
     }

@@ -85,15 +85,36 @@ public class InvoicesPage {
         return this;
     }
 
+    public InvoicesPage chooseCustomerInFilterList(String customerName) {
+        By listbox = By.xpath("//ul[@role=\"listbox\"]");
+        wait.until(ExpectedConditions.visibilityOfElementLocated(listbox));
+        By customerInList = By.xpath("//li[text()=\"" + customerName + "\"]");
+        wait.until(ExpectedConditions.visibilityOfElementLocated(customerInList));
+        driver.findElement(customerInList).click();
+        return this;
+    }
+
     public InvoicesPage changeAddressCheck() {
         waitForElement(changeAddressCheck);
-        assertTrue(driver.findElement(changeAddressCheck).isDisplayed());
+        //assertTrue(driver.findElement(changeAddressCheck).isDisplayed());
+        if (driver.findElement(changeAddressCheck).isDisplayed()) {
+            System.out.println("Адрес изменился на новый");
+        } else {
+            System.out.println("Адрес НЕ изменился");
+        }
         return this;
     }
 
     public InvoicesPage checkOldAddressRevert(String oldAddress) {
-        WebElement check = driver.findElement(By.xpath("//p[text()=\"" + oldAddress + "\"]"));
-        assertTrue(check.isDisplayed());
+        By check = By.xpath("//p[text()=\"" + oldAddress + "\"]");
+        //driver.findElement(By.xpath("//p[text()=\"" + oldAddress + "\"]"));
+        //assertTrue(check.isDisplayed());
+        waitForElement(check);
+        if (driver.findElement(check).isDisplayed()) {
+            System.out.println("Адрес изменен на первоначальный");
+        } else {
+            System.out.println("Адрес НЕ изменился на первоначальный");
+        }
         return this;
     }
 

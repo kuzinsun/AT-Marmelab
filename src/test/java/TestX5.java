@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import org.junit.Test;
+import org.openqa.selenium.firefox.FirefoxOptions;
 
 
 public class TestX5 {
@@ -32,7 +33,9 @@ public class TestX5 {
         String driver_path = ConfigLoader.getProperty("firefox_driver_path");
         System.setProperty("webdriver.gecko.driver", driver_path);
 
-        return new FirefoxDriver();
+        FirefoxOptions options = new FirefoxOptions();
+        options.setHeadless(true);
+        return new FirefoxDriver(options);
     }
 
     private OrdersPage ordersPage;
@@ -128,7 +131,9 @@ public class TestX5 {
 
             invoicesPage.sendCustomer(getCustomer);
 
-            //invoicesPage.clickExpandButton();
+            invoicesPage.chooseCustomerInFilterList(getCustomer);
+
+            invoicesPage.clickExpandButton();
 
             invoicesPage.changeAddressCheck();
 
