@@ -27,14 +27,12 @@ public class CustomersPage {
     }
 
     public CustomersPage clickCustomerCart(String getCustomerName, String getCustomerSurename) {
-        System.out.println("FIRST customer cart click" + " " + getCustomerName + " " + getCustomerSurename);
         WebElement customerCart = driver.findElement(By.xpath("//div[text()='" + getCustomerName + "' and text()='" + getCustomerSurename + "']"));
         customerCart.click();
         return this;
     }
 
     public CustomersPage clickSecondCustomerCart(String getCustomerName, String getCustomerSurename) {
-        System.out.println("Second customer cart click" + getCustomerName + " " + getCustomerSurename);
         WebElement secondCustomerCart = driver.findElement(By.xpath("//div[text()='" + getCustomerName + "' and text()='" + getCustomerSurename + "']"));
         secondCustomerCart.click();
         return this;
